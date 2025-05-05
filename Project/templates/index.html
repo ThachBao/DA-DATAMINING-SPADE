@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ứng dụng triển khai thuật toán SPADE để phát hiện dãy phổ biến trong dữ liệu trình tự">
+    <title>SPADE - Phát hiện dãy phổ biến</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="app-container">
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h1>Phát hiện dãy phổ biến</h1>
+                    <p class="breadcrumb">SPADE / Datamining</p>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <section class="input-section card">
+                    <div class="section-header">
+                        <h2><i class="fas fa-upload"></i> Nhập liệu</h2>
+                        <div class="section-actions">
+                            <button class="btn-help" id="help-btn">
+                                <i class="fas fa-question-circle"></i> Trợ giúp
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <form method="POST" enctype="multipart/form-data" id="spade-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="min_support">
+                                    <i class="fas fa-sliders-h"></i> Ngưỡng hỗ trợ tối thiểu
+                                </label>
+                                <div class="input-with-info">
+                                    <input
+                                        type="number"
+                                        id="min_support"
+                                        name="min_support"
+                                        min="1"
+                                        max="100"
+                                        value="2"
+                                        required
+                                        class="form-input"
+                                        aria-label="Ngưỡng hỗ trợ tối thiểu"
+                                    />
+                                    <span class="input-info">Giá trị từ 1-100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group file-upload-group">
+                            <label for="file">
+                                <i class="fas fa-database"></i> Dữ liệu đầu vào
+                            </label>
+                            <div class="file-upload-card" id="file-drop-area">
+                                <input
+                                    type="file"
+                                    id="file"
+                                    name="file"
+                                    accept=".txt,.csv,.dat"
+                                    required
+                                    class="file-input"
+                                    aria-label="Chọn tệp dữ liệu"
+                                />
+                                <div class="upload-content">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <div class="file-info" id="file-info">
+                                        <h3>Kéo thả file vào đây</h3>
+                                        <p>hoặc <span class="browse-link">chọn từ máy tính</span></p>
+                                        <div class="file-requirements">
+                                            <small>Định dạng hỗ trợ: .txt, .csv, .dat (Tối đa 10MB)</small>
+                                        </div>
+                                    </div>
+                                    <div class="file-name-display" id="file-name-display" style="display: none;">
+                                        <div class="file-meta">
+                                            <i class="fas fa-file-alt"></i>
+                                            <div class="file-details">
+                                                <span id="selected-file-name" class="file-name"></span>
+                                                <span class="file-size" id="file-size"></span>
+                                            </div>
+                                        </div>
+                                        <button class="btn-clear" id="clear-file-btn" type="button" aria-label="Xóa tệp đã chọn">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary" id="submit-btn" aria-label="Phân tích dữ liệu">
+                                <i class="fas fa-play"></i> Bắt đầu phân tích
+                            </button>
+                        </div>
+                    </form>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                <i class="fas fa-{{ 'exclamation-triangle' if category == 'error' else 'check-circle' }}"></i>
+                                <div class="alert-content">
+                                    <h4>{{ 'Lỗi' if category == 'error' else 'Thành công' }}</h4>
+                                    <p>{{ message }}</p>
+                                </div>
+                                <button class="alert-close">×</button>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </section>
+
+                {% if patterns is defined %}
+                    {% if patterns %}
+                        <section class="results-section card" id="results-section">
+                            <div class="section-header">
+                                <h2><i class="fas fa-chart-bar"></i> Kết quả phân tích</h2>
+                                <div class="section-actions">
+                                    <div class="btn-group">
+                                        <button class="btn-secondary" id="export-csv" aria-label="Xuất CSV">
+                                            <i class="fas fa-file-csv"></i> CSV
+                                        </button>
+                                        <button class="btn-secondary" id="export-json" aria-label="Xuất JSON">
+                                            <i class="fas fa-file-code"></i> JSON
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="analysis-summary">
+                                <div class="summary-card">
+                                    <div class="summary-icon bg-blue">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h3>Tệp dữ liệu</h3>
+                                        <p>{{ filename }}</p>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon bg-green">
+                                        <i class="fas fa-filter"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h3>Ngưỡng hỗ trợ</h3>
+                                        <p>{{ min_support }}</p>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon bg-purple">
+                                        <i class="fas fa-list-ol"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h3>Dãy phổ biến</h3>
+                                        <p>{{ patterns|length }}</p>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon bg-orange">
+                                        <i class="fas fa-stopwatch"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h3>Thời gian xử lý</h3>
+                                        <p>{{ exec_time }} {{ time_unit }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section">
+                                <div class="section-header">
+                                    <h3><i class="fas fa-eye"></i> Xem trước dữ liệu</h3>
+                                    <div class="section-actions">
+                                        <button class="btn-text" id="toggle-preview">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="preview-content" id="preview-content">
+                                    <pre id="input-content">{{ file_content }}</pre>
+                                </div>
+                            </div>
+
+                            <div class="table-section">
+                                <div class="section-header">
+                                    <h3><i class="fas fa-table"></i> Các dãy phổ biến</h3>
+                                    <div class="section-actions">
+                                        <div class="search-box">
+                                            <i class="fas fa-search"></i>
+                                            <input type="text" id="pattern-search" placeholder="Tìm kiếm dãy..." aria-label="Tìm kiếm dãy phổ biến">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-container">
+                                    <table class="results-table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50px">#</th>
+                                                <th>Dãy phổ biến</th>
+                                                <th width="150px" class="sortable" data-sort="support">
+                                                    <span>Số lần xuất hiện</span>
+                                                    <i class="fas fa-sort"></i>
+                                                </th>
+                                                <th width="100px" class="sortable" data-sort="length">
+                                                    <span>Độ dài</span>
+                                                    <i class="fas fa-sort"></i>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="patterns-body">
+                                            {% for pattern, support in patterns %}
+                                            <tr>
+                                                <td>{{ loop.index }}</td>
+                                                <td class="pattern-sequence">
+                                                    <div class="sequence-items">
+                                                        {% for item in pattern %}
+                                                            {% if item.startswith('{') and item.endswith('}') %}
+                                                                <span class="sequence-itemset">{{ item }}</span>
+                                                            {% else %}
+                                                                <span class="sequence-item">{{ item }}</span>
+                                                            {% endif %}
+                                                            {% if not loop.last %}
+                                                                <span class="sequence-arrow"><i class="fas fa-arrow-right"></i></span>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </td>
+                                                <td class="support-value">
+                                                    <div class="support-bar" style="width: {{ (support / patterns[0][1]) * 100 }}%"></div>
+                                                    <span>{{ support }}</span>
+                                                </td>
+                                                <td class="sequence-length">{{ pattern|length }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="table-footer">
+                                    <div class="table-info">
+                                        Hiển thị <span id="showing-from">1</span>-<span id="showing-to">10</span> của <span id="total-items">{{ patterns|length }}</span> kết quả
+                                    </div>
+                                    <div class="pagination" id="pagination-controls">
+                                        <button class="page-btn" id="first-page" disabled aria-label="Trang đầu">
+                                            <i class="fas fa-angle-double-left"></i>
+                                        </button>
+                                        <button class="page-btn" id="prev-page" disabled aria-label="Trang trước">
+                                            <i class="fas fa-angle-left"></i>
+                                        </button>
+                                        <div class="page-numbers" id="page-numbers"></div>
+                                        <button class="page-btn" id="next-page" disabled aria-label="Trang sau">
+                                            <i class="fas fa-angle-right"></i>
+                                        </button>
+                                        <button class="page-btn" id="last-page" disabled aria-label="Trang cuối">
+                                            <i class="fas fa-angle-double-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    {% else %}
+                        <section class="results-section card">
+                            <div class="alert alert-error">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="alert-content">
+                                    <h4>Lỗi</h4>
+                                    <p>Không tìm thấy dãy phổ biến nào với ngưỡng hỗ trợ tối thiểu là {{ min_support }}. Vui lòng thử với giá trị nhỏ hơn.</p>
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="help-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Trợ giúp</h3>
+                <button class="modal-close" id="close-help-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4><i class="fas fa-info-circle"></i> Giới thiệu thuật toán SPADE</h4>
+                    <p>SPADE (Sequential PAttern Discovery using Equivalent classes) là thuật toán khai phá dãy phổ biến trong dữ liệu trình tự. Thuật toán sử dụng phương pháp chia để trị và kỹ thuật lattice-based search để tìm các dãy phổ biến một cách hiệu quả.</p>
+                </div>
+                
+                <div class="help-section">
+                    <h4><i class="fas fa-file-upload"></i> Định dạng dữ liệu đầu vào</h4>
+                    <p>Dữ liệu cần được định dạng theo cấu trúc sau:</p>
+                    <ul>
+                        <li>Mỗi dòng đại diện cho một trình tự, bao quanh bởi dấu {}</li>
+                        <li>Các itemset trong trình tự phân cách bằng dấu },{</li>
+                        <li>Các phần tử trong cùng itemset phân cách bằng khoảng trắng</li>
+                    </ul>
+                    <div class="code-example">
+                        <pre>{A B},{C},{D E},{F}
+{A},{B C},{E},{D F}
+{B},{C E},{F G}</pre>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h4><i class="fas fa-sliders-h"></i> Ngưỡng hỗ trợ tối thiểu</h4>
+                    <p>Ngưỡng hỗ trợ tối thiểu (min_support) là số lần xuất hiện tối thiểu mà một dãy cần đạt được để được coi là phổ biến. Giá trị này nên được chọn phù hợp với kích thước tập dữ liệu.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="close-help-btn">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-group-info">
+                <i class="fas fa-users footer-icon"></i>
+                <p>Thực hiện bởi <strong>Nhóm 11 - Thuật toán SPADE</strong></p>
+            </div>
+            <div class="footer-members">
+                <p class="members-title"><i class="fas fa-address-book footer-icon"></i> Thành viên:</p>
+                <ul class="team-members-list">
+                    <li><i class="fas fa-user footer-icon-member"></i> Trương Văn Thạch Bảo (Nhóm Trưởng)</li>
+                    <li><i class="fas fa-user footer-icon-member"></i> Lê Nguyễn Hoài An </li>
+                    <li><i class="fas fa-user footer-icon-member"></i> Nguyễn Thế Duy </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner">
+                <div class="spinner-circle"></div>
+                <div class="spinner-circle"></div>
+                <div class="spinner-circle"></div>
+            </div>
+            <h3>Đang xử lý dữ liệu</h3>
+            <p id="loading-message">Vui lòng chờ trong giây lát...</p>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+                <span id="progress-percent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

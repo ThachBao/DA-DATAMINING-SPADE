@@ -1,0 +1,100 @@
+{J},{B G},{D}
+{B C J},{D G}
+{I J},{A C H},{B D I}
+{E H},{E G},{B E},{A B C},{B E J}
+{J},{A C},{C G}
+{B D},{D E J},{B D J},{B H J},{G}
+{D G I},{D},{E I J},{E G J}
+{A G J},{F},{G},{D G I}
+{A F I},{D E J},{B H},{G H},{C}
+{H},{C F},{C H},{B J}
+{B C H},{A J},{C E},{C},{D}
+{I},{C H J},{B E J},{F H},{C J}
+{D I J},{F H},{B J}
+{F H I},{F J},{B C E}
+{G H},{C D H},{B I},{B}
+{F I},{D I},{D G},{I J}
+{F},{H}
+{F},{A B},{C D},{C}
+{E},{B F},{D},{H}
+{G},{A D I},{B}
+{D},{A F G},{G}
+{C I},{A B D},{A E F}
+{H},{B D E},{G}
+{E F},{A C},{E I}
+{D I},{A G H},{B E F},{F H I}
+{B G I},{D},{B},{C G H},{B}
+{A B F},{A H},{D E},{E}
+{A J},{J}
+{B C E},{E G I},{E},{D J}
+{A H},{C}
+{E},{B},{F I},{G H I},{H}
+{F},{A F},{D}
+{A F},{D},{B E I}
+{D E H},{J},{E F G},{E},{D F H}
+{D E},{I},{A J},{B},{H}
+{D E},{C D}
+{F H},{D},{J},{G J},{C}
+{A},{F G}
+{A F},{I}
+{G},{A F},{B E J}
+{C J},{A},{A D},{D H}
+{A D},{A},{B C}
+{C E I},{G H I}
+{A C},{D F},{B C E}
+{F H I},{A E H},{A D},{F}
+{J},{B F H},{A F},{B I}
+{F H},{G J},{D E J}
+{C E I},{C H I},{B F H}
+{A F},{D},{C D},{G I}
+{B C I},{I}
+{B G I},{B E},{B H I},{G}
+{F H J},{F I J},{A C J},{G H J}
+{I},{A G},{B I},{C},{C I}
+{C},{E},{C E I},{I J}
+{B},{C I},{C E H},{C G}
+{A},{F H I},{A G}
+{C E J},{H},{H},{H J}
+{C F J},{B C I},{A D E},{C E J}
+{F H J},{E H},{A E H}
+{E F J},{C F H}
+{A E I},{D}
+{F J},{F G H},{F I},{C G J}
+{G},{B}
+{G},{A D},{A}
+{D I J},{D},{F},{G H J},{B G J}
+{G J},{E F I}
+{G},{A C H}
+{B F J},{B D J},{G},{A E}
+{D I J},{I},{I}
+{G J},{A H},{G}
+{C},{C D G},{B E},{A C G},{J}
+{A B J},{D F J},{E},{A B C},{H I}
+{D J},{D E F},{A E},{B E H},{E G}
+{E F},{C D F},{B F J},{G H J},{J}
+{A B},{C},{A B J}
+{A E},{A G}
+{F G},{J}
+{F},{A B C},{B C D},{B D},{A D I}
+{E H I},{E I},{C D},{H}
+{A E I},{B D}
+{D E I},{B},{A C},{H I J},{B F I}
+{D F J},{G I}
+{A B},{B D H}
+{B},{A H},{B I},{J},{D I}
+{G},{B}
+{I},{C I},{F H},{A B},{A B}
+{B I},{A C H}
+{A D G},{A E F},{D}
+{G J},{A E},{D J},{I},{D E F}
+{A G},{F G},{D H},{B C G},{C E H}
+{C D},{A F J},{G},{J}
+{B},{F},{G},{A E I},{A D H}
+{D F},{A G J},{E I}
+{D},{D E F}
+{E},{B},{B}
+{E F H},{I J},{B}
+{F},{D F},{B E},{E},{C E}
+{C H J},{A C},{D F I}
+{B},{A G},{B C H},{D},{I}
+{A C I},{F J},{I}
