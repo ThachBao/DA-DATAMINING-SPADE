@@ -1,0 +1,100 @@
+{Coffee},{Eggs Soap},{Soda}
+{Eggs Milk Coffee},{Soda Soap}
+{Butter Coffee},{Bread Milk Paste},{Eggs Soda Butter}
+{Noodles Paste},{Noodles Soap},{Eggs Noodles},{Bread Eggs Milk},{Eggs Noodles Coffee}
+{Coffee},{Bread Milk},{Milk Soap}
+{Eggs Soda},{Soda Noodles Coffee},{Eggs Soda Coffee},{Eggs Paste Coffee},{Soap}
+{Soda Soap Butter},{Soda},{Noodles Butter Coffee},{Noodles Soap Coffee}
+{Bread Soap Coffee},{Oil},{Soap},{Soda Soap Butter}
+{Bread Oil Butter},{Soda Noodles Coffee},{Eggs Paste},{Soap Paste},{Milk}
+{Paste},{Milk Oil},{Milk Paste},{Eggs Coffee}
+{Eggs Milk Paste},{Bread Coffee},{Milk Noodles},{Milk},{Soda}
+{Butter},{Milk Paste Coffee},{Eggs Noodles Coffee},{Oil Paste},{Milk Coffee}
+{Soda Butter Coffee},{Oil Paste},{Eggs Coffee}
+{Oil Paste Butter},{Oil Coffee},{Eggs Milk Noodles}
+{Soap Paste},{Milk Soda Paste},{Eggs Butter},{Eggs}
+{Oil Butter},{Soda Butter},{Soda Soap},{Butter Coffee}
+{Oil},{Paste}
+{Oil},{Bread Eggs},{Milk Soda},{Milk}
+{Noodles},{Eggs Oil},{Soda},{Paste}
+{Soap},{Bread Soda Butter},{Eggs}
+{Soda},{Bread Oil Soap},{Soap}
+{Milk Butter},{Bread Eggs Soda},{Bread Noodles Oil}
+{Paste},{Eggs Soda Noodles},{Soap}
+{Noodles Oil},{Bread Milk},{Noodles Butter}
+{Soda Butter},{Bread Soap Paste},{Eggs Noodles Oil},{Oil Paste Butter}
+{Eggs Soap Butter},{Soda},{Eggs},{Milk Soap Paste},{Eggs}
+{Bread Eggs Oil},{Bread Paste},{Soda Noodles},{Noodles}
+{Bread Coffee},{Coffee}
+{Eggs Milk Noodles},{Noodles Soap Butter},{Noodles},{Soda Coffee}
+{Bread Paste},{Milk}
+{Noodles},{Eggs},{Oil Butter},{Soap Paste Butter},{Paste}
+{Oil},{Bread Oil},{Soda}
+{Bread Oil},{Soda},{Eggs Noodles Butter}
+{Soda Noodles Paste},{Coffee},{Noodles Oil Soap},{Noodles},{Soda Oil Paste}
+{Soda Noodles},{Butter},{Bread Coffee},{Eggs},{Paste}
+{Soda Noodles},{Milk Soda}
+{Oil Paste},{Soda},{Coffee},{Soap Coffee},{Milk}
+{Bread},{Oil Soap}
+{Bread Oil},{Butter}
+{Soap},{Bread Oil},{Eggs Noodles Coffee}
+{Milk Coffee},{Bread},{Bread Soda},{Soda Paste}
+{Bread Soda},{Bread},{Eggs Milk}
+{Milk Noodles Butter},{Soap Paste Butter}
+{Bread Milk},{Soda Oil},{Eggs Milk Noodles}
+{Oil Paste Butter},{Bread Noodles Paste},{Bread Soda},{Oil}
+{Coffee},{Eggs Oil Paste},{Bread Oil},{Eggs Butter}
+{Oil Paste},{Soap Coffee},{Soda Noodles Coffee}
+{Milk Noodles Butter},{Milk Paste Butter},{Eggs Oil Paste}
+{Bread Oil},{Soda},{Milk Soda},{Soap Butter}
+{Eggs Milk Butter},{Butter}
+{Eggs Soap Butter},{Eggs Noodles},{Eggs Paste Butter},{Soap}
+{Oil Paste Coffee},{Oil Butter Coffee},{Bread Milk Coffee},{Soap Paste Coffee}
+{Butter},{Bread Soap},{Eggs Butter},{Milk},{Milk Butter}
+{Milk},{Noodles},{Milk Noodles Butter},{Butter Coffee}
+{Eggs},{Milk Butter},{Milk Noodles Paste},{Milk Soap}
+{Bread},{Oil Paste Butter},{Bread Soap}
+{Milk Noodles Coffee},{Paste},{Paste},{Paste Coffee}
+{Milk Oil Coffee},{Eggs Milk Butter},{Bread Soda Noodles},{Milk Noodles Coffee}
+{Oil Paste Coffee},{Noodles Paste},{Bread Noodles Paste}
+{Noodles Oil Coffee},{Milk Oil Paste}
+{Bread Noodles Butter},{Soda}
+{Oil Coffee},{Oil Soap Paste},{Oil Butter},{Milk Soap Coffee}
+{Soap},{Eggs}
+{Soap},{Bread Soda},{Bread}
+{Soda Butter Coffee},{Soda},{Oil},{Soap Paste Coffee},{Eggs Soap Coffee}
+{Soap Coffee},{Noodles Oil Butter}
+{Soap},{Bread Milk Paste}
+{Eggs Oil Coffee},{Eggs Soda Coffee},{Soap},{Bread Noodles}
+{Soda Butter Coffee},{Butter},{Butter}
+{Soap Coffee},{Bread Paste},{Soap}
+{Milk},{Milk Soda Soap},{Eggs Noodles},{Bread Milk Soap},{Coffee}
+{Bread Eggs Coffee},{Soda Oil Coffee},{Noodles},{Bread Eggs Milk},{Paste Butter}
+{Soda Coffee},{Soda Noodles Oil},{Bread Noodles},{Eggs Noodles Paste},{Noodles Soap}
+{Noodles Oil},{Milk Soda Oil},{Eggs Oil Coffee},{Soap Paste Coffee},{Coffee}
+{Bread Eggs},{Milk},{Bread Eggs Coffee}
+{Bread Noodles},{Bread Soap}
+{Oil Soap},{Coffee}
+{Oil},{Bread Eggs Milk},{Eggs Milk Soda},{Eggs Soda},{Bread Soda Butter}
+{Noodles Paste Butter},{Noodles Butter},{Milk Soda},{Paste}
+{Bread Noodles Butter},{Eggs Soda}
+{Soda Noodles Butter},{Eggs},{Bread Milk},{Paste Butter Coffee},{Eggs Oil Butter}
+{Soda Oil Coffee},{Soap Butter}
+{Bread Eggs},{Eggs Soda Paste}
+{Eggs},{Bread Paste},{Eggs Butter},{Coffee},{Soda Butter}
+{Soap},{Eggs}
+{Butter},{Milk Butter},{Oil Paste},{Bread Eggs},{Bread Eggs}
+{Eggs Butter},{Bread Milk Paste}
+{Bread Soda Soap},{Bread Noodles Oil},{Soda}
+{Soap Coffee},{Bread Noodles},{Soda Coffee},{Butter},{Soda Noodles Oil}
+{Bread Soap},{Oil Soap},{Soda Paste},{Eggs Milk Soap},{Milk Noodles Paste}
+{Milk Soda},{Bread Oil Coffee},{Soap},{Coffee}
+{Eggs},{Oil},{Soap},{Bread Noodles Butter},{Bread Soda Paste}
+{Soda Oil},{Bread Soap Coffee},{Noodles Butter}
+{Soda},{Soda Noodles Oil}
+{Noodles},{Eggs},{Eggs}
+{Noodles Oil Paste},{Butter Coffee},{Eggs}
+{Oil},{Soda Oil},{Eggs Noodles},{Noodles},{Milk Noodles}
+{Milk Paste Coffee},{Bread Milk},{Soda Oil Butter}
+{Eggs},{Bread Soap},{Eggs Milk Paste},{Soda},{Butter}
+{Bread Milk Butter},{Oil Coffee},{Butter}
